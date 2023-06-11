@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -7,23 +8,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit{
   title = 'jarUpdatorBot';
-  selectedFile!: File;
+  selectedFile: File | null = null;
+
+  constructor(private http: HttpClient) { }
 
 ngOnInit(): void {
   
 }
 
 onFileSelected(event:any):void{
-  this.selectedFile = event.target.file[0];
+  this.selectedFile = event.target.files[0];
 }
 
 start() {
   // Logic for start button
   console.log('Start button clicked');
   if (this.selectedFile) {
-    const fileUrl = URL.createObjectURL(this.selectedFile);
-    window.open(fileUrl);
-    console.log('File Opened successfully');
+    const formData = new FormData();
+    formData.append('file', this.selectedFile, this.selectedFile.name);
+    console.log('formData 1:', formData);
+    console.log('formData 2:', this.selectedFile.name);
+    this.http.get('http://localhost:3000/api/process-id/'+ this.selectedFile.name).subscribe(
+      (response: any) => {
+        // Handle the response after starting the application
+        console.log('Application started successfully:', response);
+      },
+      (error) => {
+        console.error('Error starting the application:', error);
+      }
+    );
+  } else {
+    console.error('No file selected');
   }
 }
 
