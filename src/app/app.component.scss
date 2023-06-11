@@ -1,0 +1,78 @@
+
+.start-button {
+  background-color: green;
+  color: white;
+  margin-right:40px;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+  
+  .stop-button {
+    background-color: red;
+    color: white;
+    margin-right:40px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+  
+  .preview-button {
+    background-color: orange;
+    color: white;
+    margin-right:40px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+  
+  .help-button {
+    background-color: blue; 
+    color: white;
+    margin-right:40px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+
+  .status-button {
+    background-color: grey; 
+    color: white;
+    margin-right:40px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    font-size: 16px;
+    align-items: center;
+  justify-content: center;
+  }
+
+  .title {
+    text-align: center;
+    font-family: cursive;  
+  }
+
+  .button-rounded {
+    border-radius: 20px; /* Adjust the value to control the roundness */
+  }
+  
+  .button-pill {
+    border-radius: 50px; /* Make the button a pill shape */
+  }
+  
+  .button-curved {
+    border-radius: 10px 50px 10px; /* Customize the shape with specific radii */
+  }
+  
+  .button-square {
+    border-radius: 0; /* Make the button square by setting border-radius to 0 */
+  }

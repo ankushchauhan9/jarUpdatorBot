@@ -1,0 +1,19 @@
+<H1 class="title">{{title}}</H1>
+<br><br>
+<div>
+<input type="file" class="form-control" (change) = "onFileSelected($event)">
+<div *ngIf="selectedFile">
+    Selected File: {{ selectedFile.name }}
+  </div>
+<br>
+<button (click)="start()" class="start-button , button-pill">Start</button>
+
+<button (click)="stop()" class="stop-button , button-pill">Stop</button>
+
+<button (click)="preview()" class="preview-button , button-pill">Preview</button>
+
+<button (click)="help()" class="help-button , button-pill" >Help</button>
+<br>
+<br>
+<button (click)="status()" class="status-button , button-pill" >Status</button>
+</div>
