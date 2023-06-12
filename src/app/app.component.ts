@@ -23,6 +23,12 @@ onFileSelected(event:any):void{
 start() {
   // Logic for start button
   console.log('Start button clicked');
+
+}
+
+stop() {
+  // Logic for stop button
+  console.log('Stop button clicked');
   if (this.selectedFile) {
     const formData = new FormData();
     formData.append('file', this.selectedFile, this.selectedFile.name);
@@ -40,11 +46,6 @@ start() {
   } else {
     console.error('No file selected');
   }
-}
-
-stop() {
-  // Logic for stop button
-  console.log('Stop button clicked');
 }
 
 preview() {
