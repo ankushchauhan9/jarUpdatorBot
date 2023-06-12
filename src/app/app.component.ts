@@ -30,17 +30,14 @@ stop() {
   // Logic for stop button
   console.log('Stop button clicked');
   if (this.selectedFile) {
-    const formData = new FormData();
-    formData.append('file', this.selectedFile, this.selectedFile.name);
-    console.log('formData 1:', formData);
-    console.log('formData 2:', this.selectedFile.name);
+  
     this.http.get('http://localhost:3000/api/process-id/'+ this.selectedFile.name).subscribe(
       (response: any) => {
         // Handle the response after starting the application
-        console.log('Application started successfully:', response);
+        console.log('Application closed successfully:', response);
       },
       (error) => {
-        console.error('Error starting the application:', error);
+        console.error('Error clsoing the application:', error);
       }
     );
   } else {
