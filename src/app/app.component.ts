@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient , HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +23,11 @@ onFileSelected(event:any):void{
 start() {
   // Logic for start button
   console.log('Start button clicked');
-
+  if (this.selectedFile) {
+    const jarFile: File = this.selectedFile;
+    const args: string = 'hello'; // Replace with your desired arguments
+    this.executeJarWithArguments(jarFile, args);
+  }
 }
 
 stop() {
@@ -58,6 +62,25 @@ help() {
 status() {
   // Logic for help button
   console.log('status button clicked');
+}
+
+executeJarWithArguments(jarFile: File, params: string): void {
+  console.log('params' + params);
+   const filepath ='C:/Users/Horizon/Desktop/';
+  const formData = new FormData();
+    formData.append('jarFile', jarFile, jarFile.name);
+    formData.append('params', params);
+    formData.append('filepath', filepath);
+  this.http.post('http://localhost:3000/execute-jar',  formData).subscribe(
+    () => {
+      // Handle success response
+      console.log('JAR execution successful');
+    },
+    (error) => {
+      // Handle error response
+      console.error('JAR execution failed', error);
+    }
+  );
 }
 
 }
