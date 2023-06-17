@@ -24,9 +24,10 @@ start() {
   // Logic for start button
   console.log('Start button clicked');
   if (this.selectedFile) {
-    const jarFile: File = this.selectedFile;
+    const file: File = this.selectedFile;
     const args: string = 'hello'; // Replace with your desired arguments
-    this.executeJarWithArguments(jarFile, args);
+    this.executeEXEWithArguments(file,args);
+    //this.executeJarWithArguments(file, args);
   }
 }
 
@@ -79,6 +80,26 @@ executeJarWithArguments(jarFile: File, params: string): void {
     (error) => {
       // Handle error response
       console.error('JAR execution failed', error);
+    }
+  );
+}
+
+executeEXEWithArguments(exeFile: File, params: string): void {
+  
+  console.log('params ' + params);
+   const filepath ='C:/Users/Horizon/Desktop/';
+  const formData = new FormData();
+    formData.append('exeFile', exeFile, exeFile.name);
+    formData.append('params', params);
+    formData.append('filepath', filepath);
+  this.http.post('http://localhost:3000/execute-exe',  formData).subscribe(
+    () => {
+      // Handle success response
+      console.log('EXE execution successful');
+    },
+    (error) => {
+      // Handle error response
+      console.error('EXE execution failed', error);
     }
   );
 }
