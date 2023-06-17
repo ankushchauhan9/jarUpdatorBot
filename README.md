@@ -25,3 +25,19 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+## steps to run
+1. Install these command in cmd of JarUpdatorBot folder
+    1. npm install -g @angular/cli 
+    2. npm install -g concurrently
+
+2 Install these commands in cmd of taskManager folder.
+    1. npm install express
+    2. npm install express-fileupload
+    3. npm install cors
+
+3. To run the application
+    Run the "npm start" command in cmd of JarUpdatorBot folder
+
+
