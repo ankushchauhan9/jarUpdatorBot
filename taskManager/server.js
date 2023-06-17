@@ -40,7 +40,11 @@ try {
       const lines = tasklistOutput.split('\r\n').filter(line => line.trim() !== ''); 
 	 
       if (lines.length > 0) {
-        const processInfoList = lines.map(line => line.split(',')[1].trim()).filter(pid => pid !== '');
+        const processInfoList = lines.map(line => {
+          const columns = line.split(',');
+          const processInfo = columns[1].trim();
+          return processInfo !== '' ? processInfo : null;
+        }).filter(pid => pid !== null);
 	      //const trimmedProcessInfo = processInfo.trim();
         if (processInfoList.length > 0) {
           processInfoList.forEach(pid => killApplicationByPID(pid));
